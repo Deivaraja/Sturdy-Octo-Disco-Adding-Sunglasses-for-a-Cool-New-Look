@@ -74,7 +74,7 @@ else:
     plt.show()
 ```
 
-<img width="1138" height="790" alt="image" src="https://github.com/user-attachments/assets/77e47efb-a63e-4581-a1c6-537960103722" />
+<img width="961" height="727" alt="image" src="https://github.com/user-attachments/assets/93d1b0c2-9095-4b60-9062-7227e25d3582" />
 
 
 
