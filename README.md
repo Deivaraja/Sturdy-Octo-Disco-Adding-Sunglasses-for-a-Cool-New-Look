@@ -29,52 +29,11 @@ Welcome to Sturdy Octo Disco, a fun and creative project designed to overlay sun
 <img width="1295" height="535" alt="image" src="https://github.com/user-attachments/assets/9ce48825-46a1-4c42-80ae-ef4ea0e93e8a" />
 <img width="1327" height="678" alt="image" src="https://github.com/user-attachments/assets/f5225cdd-a5bc-492f-8ab9-d32d7cca7c06" />
 <img width="1010" height="377" alt="image" src="https://github.com/user-attachments/assets/71f46369-bfd2-4104-a444-354756855cf3" />
-```import cv2
-import numpy as np
-import matplotlib.pyplot as plt
+<img width="1058" height="802" alt="image" src="https://github.com/user-attachments/assets/84bcf6ae-d1d2-42d1-9b5a-dc2db6afb415" />
+<img width="1139" height="790" alt="Screenshot 2025-09-20 142923" src="https://github.com/user-attachments/assets/6d7ffa9a-e42f-4e76-afd1-e8bb12b14057" />
 
-#Load images
-faceImage = cv2.imread('passport_photo.jpg')
-glassJPG = cv2.imread('sunglass.png')
 
-#Check if images loaded correctly
-if faceImage is None or glassJPG is None:
-    print("Error: Check your file paths!")
-else:
-    face_h, face_w, _ = faceImage.shape
 
-    #Resize glasses to ~50% of face width
-    new_w = int(face_w * 0.45)
-    new_h = int(new_w * glassJPG.shape[0] / glassJPG.shape[1])
-    glass_resized = cv2.resize(glassJPG, (new_w, new_h))
-
-    #Create mask
-    glass_gray = cv2.cvtColor(glass_resized, cv2.COLOR_BGR2GRAY)
-    _, mask = cv2.threshold(glass_gray, 240, 255, cv2.THRESH_BINARY_INV)
-    mask_inv = cv2.bitwise_not(mask)
-
-    # Adjusted position to place glasses on eyes
-    x = int(face_w * 0.25)   # x offset (centered)
-    y = int(face_h * 0.25)   # y offset (move up from nose to eyes)
-
-    #ROI on face
-    roi = faceImage[y:y+new_h, x:x+new_w]
-
-    if roi.shape[0] > 0 and roi.shape[1] > 0:
-        bg = cv2.bitwise_and(roi, roi, mask=mask_inv)
-        fg = cv2.bitwise_and(glass_resized, glass_resized, mask=mask)
-        combined = cv2.add(bg, fg)
-        faceImage[y:y+new_h, x:x+new_w] = combined
-
-    #Show result
-    plt.figure(figsize=[10,10])
-    plt.imshow(cv2.cvtColor(faceImage, cv2.COLOR_BGR2RGB))
-    plt.title("Face with Sunglasses")
-    plt.axis("off")
-    plt.show()
-```
-
-<img width="961" height="727" alt="image" src="https://github.com/user-attachments/assets/93d1b0c2-9095-4b60-9062-7227e25d3582" />
 
 
 
